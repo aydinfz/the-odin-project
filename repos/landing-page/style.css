@@ -134,4 +134,46 @@ img {
     */
 }
 
+.container-4 {
+    height: 500px;
+}
 
+.blue-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 100px;
+    background-color: #3882f6;
+    margin: 250px 150px;
+    height: 200px;
+    border-style: none;
+    border-radius: 10px;
+}
+
+.left-part{
+    color: white;
+}
+
+.footer {
+    height: 100px;
+    background-color: #1F2937;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.left-part h5 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.right-part button {
+    background-color: #3882f6;
+    color: white;
+    font-size: 30px;
+    width: 300px;
+    padding: 20px 30px;
+    border-color: white;
+    border-radius: 10px;
+}
