@@ -3,7 +3,9 @@ function getComputerChoice(){
     return choices[Math.floor(Math.random()*choices.length)]
 }
 
-const playerSelection = prompt("Choose rock, paper or scissors").toLowerCase()
+
+
+const playerSelection = ""//prompt("Choose rock, paper or scissors").toLowerCase()
 
 let playerScore = 0
 let computerScore = 0 
