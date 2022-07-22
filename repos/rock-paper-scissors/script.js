@@ -3,9 +3,15 @@ function getComputerChoice(){
     return choices[Math.floor(Math.random()*choices.length)]
 }
 
+function playRound () {
+    console.log(this.className)
+}
+const buttons = document.querySelectorAll("img")
+buttons.forEach(button => {
+    button.addEventListener("click", playRound)
+})
 
-
-const playerSelection = ""//prompt("Choose rock, paper or scissors").toLowerCase()
+let playerSelection = playRound()
 
 let playerScore = 0
 let computerScore = 0 
