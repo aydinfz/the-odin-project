@@ -86,3 +86,32 @@ img:hover {
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
   }
+
+.popup{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 450px;
+    height: 300px;
+    box-shadow: 0 25px 50px rgb(0, 0, 0, 0.1), 0 0 0 1000px rgb(225, 225, 225, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    visibility: hidden;
+}
+
+.popup.active{
+    visibility: visible;
+}
+.close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px 20px;
+    color: rgb(255, 255, 255);
+    background: #83a4d4;
+    cursor: pointer;
+}

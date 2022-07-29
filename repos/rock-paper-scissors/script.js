@@ -3,41 +3,51 @@ function getComputerChoice(){
     return choices[Math.floor(Math.random()*choices.length)]
 }
 
-function playRound () {
-    console.log(this.className)
-}
 const buttons = document.querySelectorAll("img")
 buttons.forEach(button => {
-    button.addEventListener("click", playRound)
+    button.addEventListener("click", (e)=> {
+        playerSelection = e.target.className
+        console.log(playerSelection)
+        compareChoices(playerSelection)
+        console.log(roundWinner)
+    })
 })
-
-let playerSelection = playRound()
-
 let playerScore = 0
 let computerScore = 0 
+let roundWinner = ""
 
 function compareChoices(playerSelection){ 
+           
     let computerSelection = getComputerChoice()
-
     if (playerSelection == "paper" && computerSelection =="rock" || playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "scissors" && computerSelection == "paper") {
         playerScore++
-        console.log(`You win! ${playerSelection} beats ${computerSelection}`)
+        roundWinner = `You win! ${playerSelection} beats ${computerSelection}`
     } else if (playerSelection == "rock" && computerSelection == "paper" || playerSelection == "scissors" && computerSelection == "rock" || playerSelection == "paper" && computerSelection == "scissors") {
         computerScore++
-        console.log(`You lose! ${computerSelection} beats ${playerSelection}`)
+        roundWinner = `You lose! ${computerSelection} beats ${playerSelection}`
     } else if (playerSelection == computerSelection){
-        console.log("No one beats")
+        roundWinner = "It is a tie"
     }
-    
-    if (playerScore != 5 && computerScore != 5) {
-        compareChoices(playerSelection)
-    } else if (playerScore == 5 || computerScore == 5) {
-        console.log(`player score: ${playerScore} computer score: ${computerScore}`)
+ 
+    document.querySelector(".player p").textContent = playerScore
+    document.querySelector(".computer p").textContent = computerScore
 
+    if (playerScore == 5) {
+        popup()
+    } else if (computerScore == 5) {
+        popup()
+        document.querySelector("h2").textContent="You lose, try again...";    
     }
     
 }
 
-compareChoices(playerSelection)
- 
-
+function popup() {
+    let popup = document.querySelector(".popup")
+    let close = document.querySelector(".close")
+    popup.classList.add("active")
+    close.onclick = () => {
+        popup.classList.remove("active")
+        playerScore = 0
+        computerScore = 0
+}
+}
