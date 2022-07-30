@@ -2,7 +2,11 @@ const body = document.querySelector("body")
 
 const container = document.createElement("div")
 container.classList.add("container")
+const text = document.createElement("h1")
+text.classList.add("text")
+text.textContent = "Etch a Sketch"
 body.appendChild(container)
+container.appendChild(text)
 
 
 const board = document.createElement("div")
@@ -23,5 +27,5 @@ function createBoard(num) {
         board.appendChild(row.cloneNode(true))
     }
 }
-createBoard(10)
+createBoard(20)
 

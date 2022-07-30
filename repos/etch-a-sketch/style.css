@@ -11,18 +11,28 @@ body{
     min-height: 100vh;
 }
 
+.text{
+    padding-top: 25px;
+}
+
 .container{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: rgb(203, 6, 6);
     width: 800px;
-    height: 500px;
+    height: 650px;
+    border-radius: 5%;
+    color: white;
 }
 
 .board{
     justify-content: center;
     align-items: center;
+    width: 500px;
+    height: 600px;
+    padding: 40px;
 }
 
 .row{
@@ -32,13 +42,19 @@ body{
 }
 
 .box{
+    display: block;
     justify-content: center;
     align-items: center;
     background-color: rgb(255, 255, 255);
-    height: 40px;
-    width: 40px;
+    height: 100%;
+    width: 100%;
+    max-height: 40px;
+    aspect-ratio: 1/1;
     border-color: rgb(0, 0, 0);
-    border-width: 1px;
+    border-width: 0.5px;
     border-style: dashed;
 }
 
+.box:hover {
+    background-color: aquamarine;
+}
