@@ -3,6 +3,16 @@ function getComputerChoice(){
     return choices[Math.floor(Math.random()*choices.length)]
 }
 
+function setPlayerScore(newScore) {
+    document.querySelector(".player p").textContent = newScore
+    playerScore = newScore
+}
+
+function setComputerScore(newScore) {
+    document.querySelector(".computer p").textContent = newScore
+    computerScore = newScore
+}
+
 const buttons = document.querySelectorAll("img")
 buttons.forEach(button => {
     button.addEventListener("click", (e)=> {
@@ -14,7 +24,6 @@ buttons.forEach(button => {
 })
 let playerScore = 0
 let computerScore = 0 
-let roundWinner = ""
 
 function compareChoices(playerSelection){ 
            
@@ -27,13 +36,17 @@ function compareChoices(playerSelection){
         roundWinner = `You lose! ${computerSelection} beats ${playerSelection}`
     } else if (playerSelection == computerSelection){
         roundWinner = "It is a tie"
+        return
     }
  
-    document.querySelector(".player p").textContent = playerScore
-    document.querySelector(".computer p").textContent = computerScore
+   setPlayerScore(playerScore)
+   setComputerScore(computerScore)
+   console.log(playerScore)
 
     if (playerScore == 5) {
         popup()
+        document.querySelector("h2").textContent="You win";    
+        startConfetti();
     } else if (computerScore == 5) {
         popup()
         document.querySelector("h2").textContent="You lose, try again...";    
@@ -46,8 +59,10 @@ function popup() {
     let close = document.querySelector(".close")
     popup.classList.add("active")
     close.onclick = () => {
+        setPlayerScore(0)
+        setComputerScore(0)
+        stopConfetti()
         popup.classList.remove("active")
-        playerScore = 0
-        computerScore = 0
+    }
 }
-}
+
