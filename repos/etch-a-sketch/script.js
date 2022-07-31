@@ -26,6 +26,28 @@ function createBoard(num) {
     for (let i=0; i<num-1; i++){
         board.appendChild(row.cloneNode(true))
     }
+    
+    const boxes = document.querySelectorAll(".box")
+    for (let i=0; i<boxes.length; i++){
+        boxes[i].setAttribute('id', `${i+1}`)
+    }
+    
 }
-createBoard(20)
+createBoard(20)  // 5-20 arası input 
+
+
+const btnSection = document.createElement("div")
+btnSection.classList.add("btn-section")
+container.appendChild(btnSection)
+
+const button1 = document.createElement("button")
+button1.classList.add("btn-1")
+button1.textContent = "Color"
+btnSection.appendChild(button1)
+
+const button2 = document.createElement("button")
+button2.classList.add("btn-2")
+button2.textContent = "Clear"
+btnSection.appendChild(button2)
+
 
