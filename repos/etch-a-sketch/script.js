@@ -33,8 +33,7 @@ function createBoard(num) {
     }
     
 }
-createBoard(20)  // 5-20 arası input 
-
+createBoard(10)  // 5-20 arası input 
 
 const btnSection = document.createElement("div")
 btnSection.classList.add("btn-section")
@@ -50,4 +49,40 @@ button2.classList.add("btn-2")
 button2.textContent = "Clear"
 btnSection.appendChild(button2)
 
+const boxes = document.querySelectorAll(".box")
+
+boxes.forEach((b) => {
+    b.addEventListener("mousemove", (event) => {
+        if(event.buttons == 1) {
+        event.preventDefault();
+        changeBoxColor(event)
+        }
+    })
+})
+
+function changeBoxColor(e) {
+    e.target.style.backgroundColor = color
+}
+
+
+function generateColor() {
+    const colors = ["blue", "green", "yellow", "red", "purple", "black", "gray"]
+    const randomIndex = Math.floor(Math.random() * colors.length)
+    let color = colors[randomIndex]
+    return color
+}
+
+function changeColorSelection() {
+    button1.addEventListener("click", () => {
+        color = generateColor()
+        return color
+    })
+}
+let color = changeColorSelection()
+
+
+button2.addEventListener("click", clearAll)
+function clearAll() {
+    boxes.forEach(b => b.style.backgroundColor = "white")
+}
 
