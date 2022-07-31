@@ -33,7 +33,10 @@ function createBoard(num) {
     }
     
 }
-createBoard(10)  // 5-20 arası input 
+
+let userWish = prompt("Write a number between 25-5 to create a board")
+createBoard(userWish)
+
 
 const btnSection = document.createElement("div")
 btnSection.classList.add("btn-section")
