@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,100;1,300;1,400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Bitter', serif;
+}
+
+body {
+    background-image: url("form_background.jpg");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    margin-right: 50px;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(239, 230, 217, 0.5);
+    margin-left: auto;
+    box-shadow: 12px 0 15px -4px rgba(31, 73, 125, 0.8), -12px 0 8px -4px rgba(31, 73, 125, 0.8);
+    width: 50%;
+    height: 100vh;    
+}
+
+h1 {
+    font-size: 80;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    font-style: italic;
+}
+
+.form-section {
+    margin-top: 50px;
+}
+
+.input {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px;
+}
+
+label {
+    margin-right: 55px;
+}
+
+button {
+    padding: 5px 35px;
+    margin: 20px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+.log-in {
+    display: flex;
+    justify-content:center;
+}
+
+a {
+    margin-left: 15px;
+}
