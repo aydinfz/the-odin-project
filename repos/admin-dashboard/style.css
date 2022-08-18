@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap');
 
 :root {
-    --prime-color: #a6d4bfe0;
+    --prime-color: #d1f1e3e0;
     --sec-color: #1f1c1c;
     --ter-color: #ffffff;
     --shadow: 3px 5px 15px -5px rgba(0,0,0,0.75);
@@ -47,9 +47,11 @@ body {
 input {
     width: 400px;
     margin: 0 2rem;
-    border-style: none;
+    border-style: solid;
     border-radius: 10px;
-    background-color: var(--prime-color);
+    border-width: 1.5px;
+    border-color: var(--sec-color);
+    background-color: var(--ter-color-color);
 }
 
 .mini-profile {
