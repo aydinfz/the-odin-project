@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>B-Shelf</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img src="open-book.png" alt="" />
+        <h1>B-Shelf</h1>
+      </div>
+      <hr />
+      <div class="book-shelf">
+        <div class="card">
+          <div class="close">
+            <button>x</button>
+          </div>
+          <div class="card-content">
+            <h4>book name</h4>
+            <h4>author</h4>
+            <h4>page number</h4>
+            <h4>finished</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="add">
+        <button>+</button>
+      </div>
+
+      <hr />
+      <div class="footer">
+        <p>logo github</p>
+      </div>
+    </div>
+
+    <div class="popup">
+        <div class="form">
+            <form action="" method="get" class="form-book">
+              <div class="form-input">
+                <label for="name">Enter the book name: </label>
+                <input type="text" name="name" id="name" required />
+              </div>
+              <div class="form-input">
+                <label for="author">Enter the book's author: </label>
+                <input type="text" name="author" id="author" required />
+              </div>
+              <div class="form-input">
+                <label for="pages">Enter number of pages: </label>
+                <input type="text" name="pages" id="pages" required />
+              </div>
+              <div class="form-select">
+                  <label for="status">Choose status: </label>
+              <select name="status" id="status">
+                <option value="completed">completed</option>
+                <option value="reading">reading</option>
+                <option value="not started">not started</option>
+              </select>
+              </div>
+              <div class="form-input">
+                <input type="submit" value="Subscribe!" />
+              </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
