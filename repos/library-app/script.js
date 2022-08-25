@@ -1,12 +1,12 @@
 const myLibrary = [];
 
-function Book(name, author, pages) {
-  (this.name = name),
+function Book(name, author, pages, status = "not started") {
+    (this.name = name),
     (this.author = author),
     (this.pages = pages),
-    (this.isRead = false),
+    (this.status = status),
     (this.info = () => {
-        return `${this.name} by ${this.author}, ${this.pages} pages, ${this.isRead}`
+        return `${this.name} by ${this.author}, ${this.pages} pages, ${this.status}`
       
     });
 }
@@ -15,24 +15,21 @@ let book1 = new Book("Atomic Habits", "James Clear", 400);
 let book2 = new Book("1984", "George Orwell", 500)
 myLibrary.push(book1)
 myLibrary.push(book2)
-console.log(myLibrary[0])
 
-function addBookToLibrary() {
-
-}
 
 const bookShelf = document.querySelector(".book-shelf");
 
-function createNodeElement(book) {
+function createNodeElement(book, id) {
 
   let card = document.createElement("div");
   card.classList.add("card");
+  card.setAttribute("data-id", id)
   let cardContent = document.createElement("div");
   cardContent.insertAdjacentHTML("afterbegin", `
     <h4>Title: ${book.name}</h4>
     <h4>Author: ${book.author}</h4>
     <h4>Pages: ${book.pages}<h4/>
-    <h4>Status: ${book.isRead}<h4/>
+    <h4>Status: ${book.status}<h4/>
     <h5>Info: ${book.info()}<h5/>
   `)
   cardContent.classList.add("card-content");
@@ -40,6 +37,7 @@ function createNodeElement(book) {
   let closeButton = document.createElement("div");
   let button = document.createElement("button");
   button.innerText = "x";
+  button.setAttribute("onclick", `removeBook(${id})`)
   closeButton.classList.add("close");
 
   closeButton.appendChild(button);
@@ -47,26 +45,63 @@ function createNodeElement(book) {
   card.appendChild(cardContent);
   bookShelf.appendChild(card);
 }
-createNodeElement(book1);
 
-let card = document.querySelector(".card")
+function removeBook(id) {
+    myLibrary.splice(id, 1)
+    displayBook()
+}
+//createNodeElement(book1);
+
+/* let card = document.querySelector(".card")
 card.innerHTML = ""
 
 function cloneCard() {
     let clone = card.cloneNode(true);
     bookShelf.appendChild(clone)
 }
-cloneCard()
+cloneCard() */
 
-function displayBook() {}
+function displayBook() {
+    bookShelf.innerHTML = ""
+    return myLibrary.forEach((el, ind) => createNodeElement(el, ind))
+}
 
 displayBook();
 
 
 
 const addButton = document.querySelector(".add button")
-addButton.addEventListener("click", openForm)
+const popup = document.querySelector(".popup")
 
-function openForm() {
-    
-}
+
+addButton.addEventListener("click", () => {
+    popup.style.visibility = "visible"
+})
+
+document.addEventListener("click", (e) => {
+    if (!e.composedPath().includes(popup) && !e.composedPath().includes(addButton)) {
+        popup.style.visibility = "hidden"
+    }
+})
+
+
+const form = document.querySelector('form');
+/* 
+const output = document.getElementById('output');
+} */
+
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault()
+    const formData = new FormData(form);
+    let name = formData.get("name")
+    let author = formData.get("author")
+    let pages = formData.get("pages")
+    let status = formData.get("status")
+    let newBook = new Book(name, author, pages, status) 
+    createNodeElement(newBook, myLibrary.length)
+    myLibrary.push(newBook)
+    popup.style.visibility = "hidden"
+    form.reset()
+})
+

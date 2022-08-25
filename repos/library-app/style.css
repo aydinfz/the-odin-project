@@ -113,6 +113,7 @@ h5 {
     background-color: var(--main-color);
     position: absolute;
     border-radius: 8px;
+    visibility: hidden;
 }
 
 .form {
