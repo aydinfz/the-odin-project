@@ -1,4 +1,4 @@
-const myLibrary = [];
+const myLibrary = [] || JSON.parse(localStorage.getItem("books"), undefined, 4) 
 
 function Book(name, author, pages, status = "not started") {
     (this.name = name),
@@ -11,16 +11,9 @@ function Book(name, author, pages, status = "not started") {
     });
 }
 
-let book1 = new Book("Atomic Habits", "James Clear", 400);
-let book2 = new Book("1984", "George Orwell", 500)
-myLibrary.push(book1)
-myLibrary.push(book2)
-
-
 const bookShelf = document.querySelector(".book-shelf");
 
 function createNodeElement(book, id) {
-
   let card = document.createElement("div");
   card.classList.add("card");
   card.setAttribute("data-id", id)
@@ -30,7 +23,7 @@ function createNodeElement(book, id) {
     <h4>Author: ${book.author}</h4>
     <h4>Pages: ${book.pages}<h4/>
     <h4>Status: ${book.status}<h4/>
-    <h5>Info: ${book.info()}<h5/>
+    <h5>Info: ${book.info}<h5/>
   `)
   cardContent.classList.add("card-content");
 
@@ -48,6 +41,7 @@ function createNodeElement(book, id) {
 
 function removeBook(id) {
     myLibrary.splice(id, 1)
+    localStorage.setItem("books", JSON.stringify(myLibrary))
     displayBook()
 }
 //createNodeElement(book1);
@@ -63,7 +57,8 @@ cloneCard() */
 
 function displayBook() {
     bookShelf.innerHTML = ""
-    return myLibrary.forEach((el, ind) => createNodeElement(el, ind))
+    const arr = localStorage.getItem("books")
+    return arr == null ? [] : JSON.parse(arr, undefined, 4).forEach((el, ind) => createNodeElement(el, ind)) 
 }
 
 displayBook();
@@ -99,8 +94,10 @@ form.addEventListener("submit", (e) => {
     let pages = formData.get("pages")
     let status = formData.get("status")
     let newBook = new Book(name, author, pages, status) 
+    newBook.info = newBook.info()
     createNodeElement(newBook, myLibrary.length)
     myLibrary.push(newBook)
+    localStorage.setItem("books", JSON.stringify(myLibrary))
     popup.style.visibility = "hidden"
     form.reset()
 })
