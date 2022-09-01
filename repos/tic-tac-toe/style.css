@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    background-color: rgb(39, 37, 36);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.board {
+    display: grid;
+    width: 30rem;
+    height: 30rem;
+}
+
+.box {
+    background-color: rgb(127, 153, 255);
+    margin: 5px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.tags {
+    display: flex;
+    justify-content: space-between;
+    width: 20rem;
+    height: 5rem;
+    padding: 1rem;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.x::after {
+    content: '❌';
+    font-size: 80px;
+}
+
+.o::after {
+    content: '⭕';
+}
