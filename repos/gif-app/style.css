@@ -16,11 +16,12 @@ body {
     align-items: center;
 }
 
+
 img {
-    border-radius: 10px;
-    border-color: rgb(219, 211, 96);
-    border-style:solid;
+    display: flex;
+    justify-content: center;
     height: 450px;
+    border-radius: 10px;
 }
 
 button {

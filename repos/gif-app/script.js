@@ -8,7 +8,7 @@ const getRandomGifs = async() => {
 
 const btnRandom = document.querySelector(".random")
 btnRandom.onclick = () => {
-    getRandomGifs()
+    getRandomGifs().catch(alert)
 }
 
 
@@ -16,7 +16,7 @@ const btnSearch = document.querySelector(".search")
 
 btnSearch.onchange = () => {
     let inputVal = document.querySelector("input").value
-    getSearchedGif(`${inputVal}`)
+    getSearchedGif(`${inputVal}`).catch(alert)
     inputVal = ""
 
     let input = document.querySelector("input")
