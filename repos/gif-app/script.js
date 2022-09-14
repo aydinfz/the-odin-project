@@ -1,9 +1,8 @@
 const img = document.querySelector("img")
 
-const getRandomGifs = () => {
-    fetch('https://api.giphy.com/v1/gifs/random?api_key=FnZNV0LtCzfhrRKs2IqwsejlbacYXowM', {mode: "cors"})
-    .then(res => res.json())
-    .then(res => img.src = res.data.images.original.url)   
+const getRandomGifs = async() => {
+    const response = await fetch('https://api.giphy.com/v1/gifs/random?api_key=FnZNV0LtCzfhrRKs2IqwsejlbacYXowM', {mode: "cors"})
+    response.json().then(res => img.src = res.data.images.original.url)   
 }
 
 const btnRandom = document.querySelector(".random")
@@ -25,8 +24,7 @@ btnSearch.onchange = () => {
 
 }
 
-const getSearchedGif = (inputVal) => {
-    fetch(`https://api.giphy.com/v1/gifs/translate?api_key=FnZNV0LtCzfhrRKs2IqwsejlbacYXowM&s=${inputVal}`)
-    .then(res => res.json())
-    .then(res => img.src = (res.data.images.original.url))
+const getSearchedGif = async(inputVal) => {
+    const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=FnZNV0LtCzfhrRKs2IqwsejlbacYXowM&s=${inputVal}`)
+    response.json().then(res => img.src = (res.data.images.original.url))
 }
