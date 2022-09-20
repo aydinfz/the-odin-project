@@ -49,4 +49,5 @@ body {
 
 .o::after {
     content: '⭕';
+    font-size: 80px;
 }
