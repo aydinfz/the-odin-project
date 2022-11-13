@@ -1,3 +1,3 @@
 export { Header } from "./Header"
-export { Card } from "./GameBoard/Card"
+export * from "./GameBoard"
 export { Footer } from "./Footer"
