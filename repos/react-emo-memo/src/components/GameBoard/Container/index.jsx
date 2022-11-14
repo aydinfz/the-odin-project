@@ -17,5 +17,5 @@ const StyledContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   background-color: #0e1010;
-  height: calc(100vh - 100px);
+  min-height: 100vh;
 `;

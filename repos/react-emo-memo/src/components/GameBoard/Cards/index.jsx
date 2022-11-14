@@ -11,7 +11,7 @@ export function Cards() {
   useEffect(() => {
     fetch(`${BASE_URL}?access_key=${API_KEY}`)
       .then((res) => res.json())
-      .then((result) => setData(result.slice(0, 5)));
+      .then((result) => setData(result.slice(0, 7)));
   }, []);
   return (
     <Wrapper>
@@ -24,5 +24,6 @@ export function Cards() {
 const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   margin: 30px;
 `;
