@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes, css } from "styled-components";
 
-export function Card({ character, name, key }) {
+export function Card({ character, name }) {
   return (
     <StyledCard>
       <CardEmo>{character}</CardEmo>

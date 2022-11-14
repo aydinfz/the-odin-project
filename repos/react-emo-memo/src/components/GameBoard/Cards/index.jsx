@@ -5,18 +5,17 @@ import { Card } from "../Card";
 
 export function Cards() {
   const BASE_URL = "https://emoji-api.com/emojis";
-  const API_KEY = "f15cb239f62af09fbb3afe930b3df57a0dce244a";
   const [data, setData] = useState();
 
   useEffect(() => {
-    fetch(`${BASE_URL}?access_key=${API_KEY}`)
+    fetch(`${BASE_URL}?access_key=${import.meta.env.VITE_API_KEY}`)
       .then((res) => res.json())
       .then((result) => setData(result.slice(0, 7)));
   }, []);
   return (
     <Wrapper>
       {data?.map((d) => (
-        <Card character={d.character} name={d.unicodeName} key={d.codePoint}/>
+        <Card character={d.character} name={d.unicodeName} key={d.codePoint} />
       ))}
     </Wrapper>
   );
