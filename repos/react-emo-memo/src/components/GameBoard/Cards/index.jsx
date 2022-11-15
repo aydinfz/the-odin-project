@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Card } from "../Card";
 
@@ -8,14 +8,48 @@ export function Cards() {
   const [data, setData] = useState();
 
   useEffect(() => {
-    fetch(`${BASE_URL}?access_key=${import.meta.env.VITE_API_KEY}`)
-      .then((res) => res.json())
-      .then((result) => setData(result.slice(0, 7)));
+    async function fetchEmojis() {
+      const response = await fetch(
+        `${BASE_URL}?access_key=${import.meta.env.VITE_API_KEY}`
+      );
+      const json = await response.json();
+      const result = await json.slice(0, 7);
+      setData(shuffleData(result));
+    }
+    fetchEmojis();
   }, []);
+
+  const [cardsId, setCardsId] = useState([]);
+  const checkCardsId = (cardsId) => {
+    return isGameOver(new Set(cardsId).size !== cardsId.length);
+  };
+
+  const isGameOver = (round) => {
+    return round === true ? console.log("dieee") : console.log("continue");
+  };
+
+  useEffect(() => {
+    checkCardsId(cardsId);
+  }, [cardsId]);
+
+  const addCardId = (id) => {
+    return setCardsId([id, ...cardsId]);
+  };
+
+  const shuffleData = (data) => {
+    return data.sort(() => Math.random() - 0.5);
+  };
+
   return (
     <Wrapper>
       {data?.map((d) => (
-        <Card character={d.character} name={d.unicodeName} key={d.codePoint} />
+        <Card
+          key={d.codePoint}
+          character={d.character}
+          name={d.unicodeName}
+          id={d.codePoint}
+          addCardId={addCardId}
+        />
       ))}
     </Wrapper>
   );

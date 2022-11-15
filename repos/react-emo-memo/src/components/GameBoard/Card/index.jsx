@@ -1,22 +1,20 @@
 import React from "react";
-import styled, { keyframes, css } from "styled-components";
+import styled from "styled-components";
 
-export function Card({ character, name }) {
+export function Card({ character, name, id, addCardId }) {
   return (
-    <StyledCard>
+    <StyledCard
+      onClick={() => {
+        addCardId(id);
+      }}
+    >
       <CardEmo>{character}</CardEmo>
-      <CardInfo>{name}</CardInfo>
+      <CardInfo>
+        {name} {id}
+      </CardInfo>
     </StyledCard>
   );
 }
-const appear = keyframes`
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-`;
 
 const StyledCard = styled.div`
   display: flex;
