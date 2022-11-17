@@ -5,7 +5,7 @@ import { Card } from "../Card";
 
 export function Cards() {
   const BASE_URL = "https://emoji-api.com/emojis";
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     async function fetchEmojis() {
@@ -13,18 +13,21 @@ export function Cards() {
         `${BASE_URL}?access_key=${import.meta.env.VITE_API_KEY}`
       );
       const json = await response.json();
-      const result = await json.slice(0, 7);
-      setData(shuffleData(result));
+      const result = await json.slice(0, 13);
+      setData(result);
     }
     fetchEmojis();
   }, []);
 
   const ref = useRef([]);
+  const shuffle = (_data) => {
+    return [..._data].sort(() => 0.5 - Math.random());
+  };
 
   const addCardId = (id) => {
     ref.current = [id, ...ref.current];
     checkCardsId(ref.current);
-    console.log(ref.current);
+    setData(shuffle(data));
   };
 
   const checkCardsId = (_cardsId) => {
@@ -35,11 +38,6 @@ export function Cards() {
     if (round) console.log("dieee");
     else console.log("continuee");
   };
-
-  /* 
-  const shuffleData = () => {
-    return data.sort(() => Math.random() - 0.5);
-  }; */
 
   return (
     <Wrapper>
