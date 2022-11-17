@@ -19,26 +19,27 @@ export function Cards() {
     fetchEmojis();
   }, []);
 
-  const [cardsId, setCardsId] = useState([]);
-  const checkCardsId = (cardsId) => {
-    return isGameOver(new Set(cardsId).size !== cardsId.length);
+  const ref = useRef([]);
+
+  const addCardId = (id) => {
+    ref.current = [id, ...ref.current];
+    checkCardsId(ref.current);
+    console.log(ref.current);
+  };
+
+  const checkCardsId = (_cardsId) => {
+    isGameOver(new Set(_cardsId).size !== _cardsId.length);
   };
 
   const isGameOver = (round) => {
-    return round === true ? console.log("dieee") : console.log("continue");
+    if (round) console.log("dieee");
+    else console.log("continuee");
   };
 
-  useEffect(() => {
-    checkCardsId(cardsId);
-  }, [cardsId]);
-
-  const addCardId = (id) => {
-    return setCardsId([id, ...cardsId]);
-  };
-
-  const shuffleData = (data) => {
+  /* 
+  const shuffleData = () => {
     return data.sort(() => Math.random() - 0.5);
-  };
+  }; */
 
   return (
     <Wrapper>
