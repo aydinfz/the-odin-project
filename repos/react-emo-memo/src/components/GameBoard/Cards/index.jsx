@@ -7,10 +7,8 @@ export function Cards() {
   const BASE_URL = "https://emoji-api.com/emojis";
   const [data, setData] = useState([]);
   const [lvl, setLvl] = useState(1);
-  const [cardsNum, setCardsNum] = useState(3);
-  
+  const [cardsNum, setCardsNum] = useState(0);
   const ref = useRef([]);
-  const selectedCards = ref.current;
 
   useEffect(() => {
     async function fetchEmojis() {
@@ -28,31 +26,29 @@ export function Cards() {
     return [..._data].sort(() => 0.5 - Math.random());
   };
 
-  const addCardId = (id) => {
+  const onClickCard = (id) => {
     ref.current = [id, ...ref.current];
-    checkCardsId();
     setData(shuffle(data));
+    nextLvl();
   };
 
   const checkCardsId = () => {
-    return new Set(selectedCards).size === selectedCards.length;
+    return new Set(ref.current).size === ref.current.length;
   };
 
   useEffect(() => {
     ref.current = [];
-    nextLvl();
+    setCardsNum(2 * lvl + 1);
   }, [lvl]);
 
   const nextLvl = () => {
-    if (cardsNum === selectedCards.length && checkCardsId() === true) {
+    if (cardsNum === ref.current.length && checkCardsId() === true) {
       setLvl(lvl + 1);
-      setCardsNum(2 * lvl + 2);
     }
   };
-  nextLvl();
 
   console.log({ lvl: lvl });
-  console.log(selectedCards);
+  console.log(ref.current);
   console.log(checkCardsId());
 
   return (
@@ -63,7 +59,7 @@ export function Cards() {
           character={d.character}
           name={d.unicodeName}
           id={d.codePoint}
-          addCardId={addCardId}
+          onClickCard={onClickCard}
         />
       ))}
     </Wrapper>

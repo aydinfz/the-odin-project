@@ -1,12 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-export function Card({ character, name, id, addCardId }) {
-
+export function Card({ character, name, id, onClickCard }) {
   return (
     <StyledCard
       onClick={() => {
-        addCardId(id);
+        onClickCard(id);
       }}
     >
       <CardEmo>{character}</CardEmo>
