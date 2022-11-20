@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Card } from "../Card";
 
-export function Cards({ score, setScore, bestScore, setBestScore }) {
+export function Cards({ score, setScore, bestScore, setBestScore, setGameOver }) {
   const BASE_URL = "https://emoji-api.com/emojis";
   const [data, setData] = useState([]);
   const [lvl, setLvl] = useState(1);
@@ -58,6 +58,7 @@ export function Cards({ score, setScore, bestScore, setBestScore }) {
     if (!isGameOver()) {
       setScore(score + 1);
     } else {
+      setGameOver(true)
       setScore(0);
     }
   };

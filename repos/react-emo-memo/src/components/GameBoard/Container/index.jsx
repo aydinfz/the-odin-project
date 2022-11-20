@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Card } from "../Card";
 import { Cards } from "../Cards";
 
-export function Container({ score, setScore, bestScore, setBestScore }) {
+export function Container({ score, setScore, bestScore, setBestScore, setGameOver }) {
   return (
     <StyledContainer>
       <Cards
@@ -11,6 +11,7 @@ export function Container({ score, setScore, bestScore, setBestScore }) {
         setScore={setScore}
         bestScore={bestScore}
         setBestScore={setBestScore}
+        setGameOver={setGameOver}
       />
     </StyledContainer>
   );
