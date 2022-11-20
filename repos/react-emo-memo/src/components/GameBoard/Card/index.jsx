@@ -34,7 +34,7 @@ const StyledCard = styled.div`
   &:hover {
     transform: translate(0%, -3%);
     transition: 0.1s ease-out;
-    box-shadow: 1px 1px 10px 0px #ff8c3a;
+    box-shadow: 1px 1px 10px 0px #ffe83a;
   }
 `;
 

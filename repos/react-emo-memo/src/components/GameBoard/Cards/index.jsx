@@ -3,10 +3,9 @@ import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Card } from "../Card";
 
-export function Cards({ score, setScore, bestScore, setBestScore, setGameOver }) {
+export function Cards({ score, setScore, bestScore, setBestScore, lvl, setLvl, setGameOver }) {
   const BASE_URL = "https://emoji-api.com/emojis";
   const [data, setData] = useState([]);
-  const [lvl, setLvl] = useState(1);
   const [cardsNum, setCardsNum] = useState(0);
   const ref = useRef([]);
 

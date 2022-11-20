@@ -1,12 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-export function ScoreBoard({ score, bestScore }) {
+export function ScoreBoard({ score, bestScore, lvl }) {
   return (
     <StyledBoard>
-      <Score> Score:{score} </Score>
+      <Level> Level:{lvl}</Level>
       <Divider />
-      <BestScore> Best:{bestScore} </BestScore>
+      <Scores>
+      <Score> Score:{score} </Score>
+      <Best> Best:{bestScore} </Best>
+      </Scores>
     </StyledBoard>
   );
 }
@@ -16,19 +19,30 @@ const StyledBoard = styled.div`
   display: flex;
   align-items: center;
   justify-content: end;
-  font-size: 22px;
   padding: 10px 10px 0 10px;
   margin-left: 2rem;
 `;
+
+const Scores = styled.div`
+  display: flex;
+  flex-direction: column;
+color:white
+`
+
 const Score = styled.p`
-  color: #f0ff64;
+  //color: #f0ff64;
 `;
 const Divider = styled.div`
-  height: 24px;
+  height: 32px;
   width: 1px;
-  background-color: white;
+  background-color: #ff5756;
   margin: 0 10px;
 `;
-const BestScore = styled.p`
-  color: #ff8c3a;
+const Best = styled.p`
+ // color: #ff8c3a;
+`;
+
+const Level = styled.p`
+  color: white;
+  font-size: 24px;
 `;
