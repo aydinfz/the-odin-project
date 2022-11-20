@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Card } from "../Card";
 
-export function Cards() {
+export function Cards({ score, setScore, bestScore, setBestScore }) {
   const BASE_URL = "https://emoji-api.com/emojis";
   const [data, setData] = useState([]);
   const [lvl, setLvl] = useState(1);
@@ -29,11 +29,12 @@ export function Cards() {
   const onClickCard = (id) => {
     ref.current = [id, ...ref.current];
     setData(shuffle(data));
+    updateScores();
     nextLvl();
   };
 
-  const checkCardsId = () => {
-    return new Set(ref.current).size === ref.current.length;
+  const isGameOver = () => {
+    return new Set(ref.current).size !== ref.current.length;
   };
 
   useEffect(() => {
@@ -42,14 +43,30 @@ export function Cards() {
   }, [lvl]);
 
   const nextLvl = () => {
-    if (cardsNum === ref.current.length && checkCardsId() === true) {
+    if (cardsNum === ref.current.length && isGameOver() === false) {
       setLvl(lvl + 1);
     }
   };
 
+  useEffect(() => {
+    if (score > bestScore) {
+      setBestScore(score);
+    }
+  }, [score]);
+
+  const updateScores = () => {
+    if (!isGameOver()) {
+      setScore(score + 1);
+    } else {
+      setScore(0);
+    }
+  };
+
+  console.log({ score: score });
+
   console.log({ lvl: lvl });
   console.log(ref.current);
-  console.log(checkCardsId());
+  console.log(isGameOver());
 
   return (
     <Wrapper>

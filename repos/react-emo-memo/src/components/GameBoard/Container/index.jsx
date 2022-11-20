@@ -3,10 +3,15 @@ import styled from "styled-components";
 import { Card } from "../Card";
 import { Cards } from "../Cards";
 
-export function Container() {
+export function Container({ score, setScore, bestScore, setBestScore }) {
   return (
     <StyledContainer>
-      <Cards />
+      <Cards
+        score={score}
+        setScore={setScore}
+        bestScore={bestScore}
+        setBestScore={setBestScore}
+      />
     </StyledContainer>
   );
 }

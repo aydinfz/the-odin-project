@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { LogoSection } from "./LogoSection";
 import { ScoreBoard } from "./ScoreBoard";
 
-export function Header() {
+export function Header({ score, bestScore }) {
   return (
     <HeaderStyle>
       <LogoSection />
-      <ScoreBoard />
+      <ScoreBoard score={score} bestScore={bestScore} />
     </HeaderStyle>
   );
 }

@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-export function ScoreBoard() {
+export function ScoreBoard({ score, bestScore }) {
   return (
     <StyledBoard>
-      <Score> Score:19 </Score>
+      <Score> Score:{score} </Score>
       <Divider />
-      <BestScore> Best:78 </BestScore>
+      <BestScore> Best:{bestScore} </BestScore>
     </StyledBoard>
   );
 }
