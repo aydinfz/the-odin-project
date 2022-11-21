@@ -22,6 +22,7 @@ export function GameOver({ score, setScore, setLvl, setGameOver }) {
 
 const StyledGameOver = styled.div`
   position: absolute;
+  z-index: 495;
   display: flex;
   flex-direction: column;
   align-items: center;

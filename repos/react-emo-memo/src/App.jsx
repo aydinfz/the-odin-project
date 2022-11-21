@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 import "./App.css";
 import { Header, Container, Footer, GameOver } from "./components";
 
@@ -8,7 +9,7 @@ function App() {
   const [lvl, setLvl] = useState(1);
   const [gameOver, setGameOver] = useState(false);
   return (
-    <div className="App">
+    <StyledApp>
       {console.log({lvl: lvl})}
       {gameOver && <GameOver score={score} setScore={setScore} setLvl={setLvl} setGameOver={setGameOver} />}
       <Header score={score} bestScore={bestScore} lvl={lvl} />
@@ -22,8 +23,18 @@ function App() {
         gameOver={gameOver}
         setGameOver={setGameOver}
       />
-    </div>
+      <Footer/>
+    </StyledApp>
   );
 }
 
 export default App;
+
+const StyledApp = styled.div`
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #0e1010;
+`;

@@ -26,5 +26,5 @@ const StyledContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   background-color: #0e1010;
-  min-height: 100vh;
+  height: 80vh;
 `;

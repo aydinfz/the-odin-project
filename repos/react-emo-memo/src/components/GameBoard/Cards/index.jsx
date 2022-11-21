@@ -15,7 +15,7 @@ export function Cards({
 }) {
   const BASE_URL = "https://emoji-api.com/emojis";
   const [data, setData] = useState([]);
-  const [cardsNum, setCardsNum] = useState(0);
+  const [cardsNum, setCardsNum] = useState(3);
   const ref = useRef([]);
 
   useEffect(() => {
