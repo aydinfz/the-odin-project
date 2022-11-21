@@ -32,9 +32,4 @@ export default App;
 
 const StyledApp = styled.div`
   min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  background-color: #0e1010;
 `;

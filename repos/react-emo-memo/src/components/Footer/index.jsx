@@ -14,7 +14,7 @@ export const Footer = () => {
 };
 
 const FooterWrapper = styled.footer`
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   display: flex;
@@ -29,7 +29,7 @@ const FooterWrapper = styled.footer`
 const GithubLink = styled.a`
   display: flex;
   padding-bottom: 0.3rem;
-  margin-left: 0.7rem;
+  margin-left: 1rem;
   color: white;
   font-size: 1.8rem;
   &:hover {

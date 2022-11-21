@@ -7,8 +7,8 @@ export function ScoreBoard({ score, bestScore, lvl }) {
       <Level> Level:{lvl}</Level>
       <Divider />
       <Scores>
-      <Score> Score:{score} </Score>
-      <Best> Best:{bestScore} </Best>
+        <Score> Score:{score} </Score>
+        <Best> Best:{bestScore} </Best>
       </Scores>
     </StyledBoard>
   );
@@ -26,8 +26,8 @@ const StyledBoard = styled.div`
 const Scores = styled.div`
   display: flex;
   flex-direction: column;
-color:white
-`
+  color: white;
+`;
 
 const Score = styled.p`
   //color: #f0ff64;
@@ -39,7 +39,7 @@ const Divider = styled.div`
   margin: 0 10px;
 `;
 const Best = styled.p`
- // color: #ff8c3a;
+  // color: #ff8c3a;
 `;
 
 const Level = styled.p`

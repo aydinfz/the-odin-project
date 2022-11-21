@@ -52,7 +52,7 @@ export function Cards({
 
   useEffect(() => {
     ref.current = [];
-    setCardsNum(2 * lvl + 1);
+    setCardsNum(22 * lvl + 1);
   }, [lvl]);
 
   const nextLvl = () => {

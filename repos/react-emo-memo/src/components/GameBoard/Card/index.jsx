@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 export function Card({ character, name, id, onClickCard }) {
+  function capitalizeFirstLetter(str) {
+    return str[0].toUpperCase() + str.slice(1);
+  }
   return (
     <StyledCard
       onClick={() => {
@@ -10,7 +13,7 @@ export function Card({ character, name, id, onClickCard }) {
     >
       <CardEmo>{character}</CardEmo>
       <CardInfo>
-        {name} {id}
+        {capitalizeFirstLetter(name)}
       </CardInfo>
     </StyledCard>
   );
@@ -43,7 +46,7 @@ const CardEmo = styled.div`
   justify-content: center;
   align-items: center;
 
-  font-size: 70px;
+  font-size: 75px;
   height: 100px;
   width: 100px;
   margin: 2vh;
