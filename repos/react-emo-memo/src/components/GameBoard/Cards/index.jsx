@@ -30,6 +30,17 @@ export function Cards({
     fetchEmojis();
   }, [cardsNum]);
 
+  useEffect(() => {
+    ref.current = [];
+    setCardsNum(2 * lvl + 1);
+  }, [lvl]);
+
+  useEffect(() => {
+    if (score > bestScore) {
+      setBestScore(score);
+    }
+  }, [score]);
+
   const shuffle = (_data) => {
     return [..._data].sort(() => 0.5 - Math.random());
   };
@@ -50,22 +61,11 @@ export function Cards({
     }
   };
 
-  useEffect(() => {
-    ref.current = [];
-    setCardsNum(22 * lvl + 1);
-  }, [lvl]);
-
   const nextLvl = () => {
     if (cardsNum === ref.current.length && gameOver === false) {
       setLvl(lvl + 1);
     }
   };
-
-  useEffect(() => {
-    if (score > bestScore) {
-      setBestScore(score);
-    }
-  }, [score]);
 
   console.log({ score: score });
 
