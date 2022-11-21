@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       {console.log({lvl: lvl})}
-      {gameOver && <GameOver score={score} setGameOver={setGameOver} />}
+      {gameOver && <GameOver score={score} setScore={setScore} setLvl={setLvl} setGameOver={setGameOver} />}
       <Header score={score} bestScore={bestScore} lvl={lvl} />
       <Container
         score={score}
@@ -19,6 +19,7 @@ function App() {
         setBestScore={setBestScore}
         lvl={lvl}
         setLvl={setLvl}
+        gameOver={gameOver}
         setGameOver={setGameOver}
       />
     </div>

@@ -2,7 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import img from "./skull.png";
 
-export function GameOver({ score, setGameOver }) {
+export function GameOver({ score, setScore, setLvl, setGameOver }) {
+    const startNewGame = () => {
+      setScore(0);
+      setLvl(1);
+    };
   return (
     <StyledGameOver>
       <Skull src={img} />
@@ -10,6 +14,7 @@ export function GameOver({ score, setGameOver }) {
       <Score>Your score: {score}</Score>
       <Btn onClick={() => {
         setGameOver(false)
+        startNewGame()
       }}>New Game</Btn>
     </StyledGameOver>
   );
